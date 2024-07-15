@@ -4,4 +4,4 @@ const NotFound = (req, res, next) => {
   next(error);
 };
 
-export default NotFound;
+module.exports = NotFound;

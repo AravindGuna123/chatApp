@@ -14,10 +14,11 @@ const userSchema = mongoose.Schema(
       type: String,
       required: [true, "Please enter the password"],
     },
-    pic:{
-      type:String,
-      required:true
-    }
+    pic: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "uploads.files",
+      required: true,
+    },
   },
   {
     timestamps: true,

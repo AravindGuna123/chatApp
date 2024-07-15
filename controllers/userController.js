@@ -17,7 +17,7 @@ const login = async (req, res) => {
       process.env.ACCESS_TOKEN,
       { expiresIn: "30d" }
     );
-    res.status(200).json({accessToken});
+    res.status(200).json({userInfo:user,accessToken,success:true});
   }else{
     res.status(401)
     throw new Error('Email or password is invalid')
@@ -26,6 +26,7 @@ const login = async (req, res) => {
 
 const register = async (req, res) => {
   const { name, email, password } = req.body;
+  const {id:pic}=req.file
   const userAvailable = await User.findOne({ email });
   if (userAvailable) {
     res.status(400);
@@ -36,9 +37,10 @@ const register = async (req, res) => {
     name,
     email,
     password: hashedPassword,
+    pic
   });
   if (user) {
-    res.status(201).json({ id: user._id, email: user.email });
+    res.status(201).json({ id: user._id, email: user.email, success: true });
   } else {
     res.status(400).message("User data is not valid");
   }
