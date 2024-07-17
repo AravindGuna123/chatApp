@@ -4,8 +4,6 @@ const validateToken = require("../middleware/validateUserToken");
 const router = express.Router();
 const {upload}=require('../middleware/gridFsConfig')
 
-console.log("App")
-
 router.post("/login", login);
 router.post("/register",upload.single("imageUrl"), register);
 
