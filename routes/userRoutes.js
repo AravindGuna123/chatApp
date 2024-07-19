@@ -1,15 +1,16 @@
 const express = require("express");
-const { login, register } = require("../controllers/userController");
+const { login, register, getAllUsers } = require("../controllers/userController");
 const validateToken = require("../middleware/validateUserToken");
 const router = express.Router();
-const {upload}=require('../middleware/gridFsConfig')
+const { upload } = require('../middleware/gridFsConfig')
 
 console.log("push")
 
 router.post("/login", login);
-router.post("/register",upload.single("imageUrl"), register);
+router.post("/register", upload.single("imageUrl"), register);
+router.get("/getAllUsers", getAllUsers);
 
-router.get("/current",validateToken, (req, res) => {
+router.get("/current", validateToken, (req, res) => {
   res.send(req.user);
 });
 

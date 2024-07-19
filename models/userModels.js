@@ -16,7 +16,7 @@ const userSchema = mongoose.Schema(
     },
     pic: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "uploads.files",
+      ref: "File",
       required: true,
     },
   },
