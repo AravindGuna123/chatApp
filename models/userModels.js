@@ -15,9 +15,7 @@ const userSchema = mongoose.Schema(
       required: [true, "Please enter the password"],
     },
     pic: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "File",
-      required: true,
+      type: String,
     },
   },
   {
